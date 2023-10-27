@@ -1,13 +1,12 @@
 package entity;
 
-import dto.ScooterDto;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Data
@@ -26,13 +25,6 @@ public class User {
     @ManyToMany(fetch = FetchType.LAZY)
     private ArrayList<Account> accounts;
 
-    @ManyToOne
-    private Account currentAccount;
-    @OneToOne
-    private Trip currentTrip;
-    @OneToOne
-    private Scooter currentScooter;
-
     public void addAccount(Account account){
         if (!this.accounts.contains(account))
             this.accounts.add(account);
@@ -42,6 +34,11 @@ public class User {
         return new ArrayList<>(accounts);
     }
 
+    public Account getMainAccount(){
+        return accounts.get(0);
+    }
+
+/*
     public void switchAccount(int i){
         if (i<=1)
             this.currentAccount = accounts.get(0);
@@ -64,6 +61,11 @@ public class User {
     //pausar()
 
     //activar scooter()
+    //quizas public TripDTO
+    public void beginTrip(Scooter scooter){
+        this.userController.beginTrip(scooter);
+    }
+
     public void beginTrip(Scooter scooter) throws Exception {
         if (!currentAccount.verifyAccount() || !scooter.verifyScooter())
             return;
@@ -84,6 +86,6 @@ public class User {
         this.currentScooter.setStatus('F');
         this.setCurrentTrip(null);
     }
-
+*/
 
 }
