@@ -13,6 +13,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class Account {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
     private Date creationDate;
@@ -20,9 +21,12 @@ public class Account {
     private long idMercadoPago;
     @ManyToMany(fetch = FetchType.LAZY)
     private Set<User> users;
-
     private boolean isBanned;
     private long funds;
+
+    public Account(Long id){
+        this.id = id;
+    }
 
     public void addUser(User users){
         this.users.add(users);
@@ -32,6 +36,7 @@ public class Account {
         return new HashSet<>(users);
     }
 
+    //TODO: esto va en el controller
     public boolean verifyAccount() throws Exception {
         if (this.isBanned()){
             throw new Exception("Cuenta deshabilitada.");
