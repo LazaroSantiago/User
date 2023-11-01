@@ -4,6 +4,7 @@ import entity.User;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 import repository.UserRepository;
 
 import java.util.List;
@@ -13,6 +14,13 @@ import java.util.Optional;
 public class UserService implements BaseService<User>{
     @Autowired
     private UserRepository userRepository;
+
+    private final RestTemplate restTemplate;
+
+    @Autowired
+    public UserService(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     @Override
     @Transactional
