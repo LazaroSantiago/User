@@ -1,28 +1,19 @@
 package com.example.usuario;
 
-import jakarta.annotation.PostConstruct;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import util.Test;
 
 @SpringBootApplication
-@ComponentScan({"util", "controller", "entity", "repository", "service"})
+@ComponentScan({"util", "controller", "entity", "repository", "service", "com.example.usuario"})
 @EnableJpaRepositories("repository")
 @EntityScan("entity")
 public class UsuarioApplication {
-    @Autowired
-    private Test test;
 
     public static void main(String[] args) {
         SpringApplication.run(UsuarioApplication.class, args);
     }
 
-    @PostConstruct
-    public void init() {
-        test.test();
-    }
 }
