@@ -1,11 +1,11 @@
-package controller;
+package com.example.usuario.controller;
 
-import entity.Account;
+import com.example.usuario.entity.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.AccountService;
+import com.example.usuario.service.AccountService;
 
 @RestController("AccountController")
 @RequestMapping("/accounts")

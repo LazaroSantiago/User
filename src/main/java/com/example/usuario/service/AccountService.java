@@ -1,10 +1,10 @@
-package service;
+package com.example.usuario.service;
 
-import entity.Account;
+import com.example.usuario.entity.Account;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.AccountRepository;
+import com.example.usuario.repository.AccountRepository;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package repository;
+package com.example.usuario.repository;
 
 import org.springframework.data.repository.NoRepositoryBean;
 
